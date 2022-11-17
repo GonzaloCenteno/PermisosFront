@@ -7,7 +7,7 @@
 					<appsubmenu :items="visible(item) && item.items" @menuitem-click="$emit('menuitem-click', $event)"></appsubmenu>
 				</template>
 				<template v-else>
-					<router-link v-if="item.to" :to="item.to" :class="[item.class, 'p-ripple', {'p-disabled': item.disabled}]" :style="item.style" @click="onMenuItemClick($event,item,i)" :target="item.target" :aria-label="item.label" exact role="menuitem" v-ripple>
+					<router-link v-if="ability.can(item.action, item.resource) && item.to" :to="item.to" :class="[item.class, 'p-ripple', {'p-disabled': item.disabled}]" :style="item.style" @click="onMenuItemClick($event,item,i)" :target="item.target" :aria-label="item.label" exact role="menuitem" v-ripple>
 						<i :class="item.icon"></i>
 						<span>{{item.label}}</span>
 						<i v-if="item.items" class="pi pi-fw pi-angle-down menuitem-toggle-icon"></i>
@@ -29,6 +29,8 @@
 	</ul>
 </template>
 <script>
+import ability from "@/acl/ability"
+
 export default {
 	name: 'appsubmenu',
 	props: {
@@ -40,7 +42,8 @@ export default {
 	},
 	data() {
 		return {
-			activeIndex : null
+			activeIndex : null,
+			ability: ability
 		}
 	},
 	methods: {

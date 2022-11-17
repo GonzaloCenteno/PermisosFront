@@ -37,16 +37,16 @@ export default {
                 {
                     label: 'INICIO',
                     items: [
-                        {label: 'Admin', icon: 'pi pi-fw pi-home', to: '/admin'},
-                        {label: 'Perfil', icon: 'pi pi-fw pi-id-card', to: '/admin/perfil'}
+                        {label: 'Admin', icon: 'pi pi-fw pi-home', to: '/admin', action: 'viewAny', resource: 'admin'},
+                        {label: 'Perfil', icon: 'pi pi-fw pi-id-card', to: '/admin/perfil', action: 'viewAny', resource: 'user'}
                     ]
                 },
 				{
 					label: 'Gestion y Seguridad', icon: 'pi pi-fw pi-sitemap',
 					items: [
 						
-						{label: 'Roles', icon: 'pi pi-fw pi-check-square', to: '/admin/roles'},
-                        {label: "Usuarios", icon: "pi pi-fw pi-bookmark", to: "/admin/usuario"}
+						{label: 'Roles', icon: 'pi pi-fw pi-check-square', to: '/admin/roles', action: 'viewAny', resource: 'role'},
+                        {label: "Usuarios", icon: "pi pi-fw pi-bookmark", to: "/admin/usuario", action: 'viewAny', resource: 'user'}
 					]
 				}
             ]
