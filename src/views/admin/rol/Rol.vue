@@ -4,7 +4,6 @@
 
         <Button label="Nuevo Rol" icon="pi pi-external-link" @click="openModalNuevoRol" />
         <Dialog header="Nuevo Rol" v-model:visible="displayModalNuevoRol" :breakpoints="{'960px': '75vw', '640px': '90vw'}" :style="{width: '50vw'}" :modal="true" class="p-fluid">
-            {{ rol }}
             <div class="field">
                 <label for="rol">Ingrese Nombre Rol</label>
                 <InputText id="rol" v-model.trim="rol.nombre" required="true" autofocus :class="{'p-invalid': submitted && !rol.nombre}" />

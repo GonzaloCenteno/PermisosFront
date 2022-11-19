@@ -1,7 +1,13 @@
 import { Ability } from '@casl/ability'
 import { initialAbility } from './config'
+import { Buffer } from 'buffer'
 
-const userData = JSON.parse(localStorage.getItem("userData"))
+let user = localStorage.getItem("userData")
+let userData = null
+if(user){
+    let data = Buffer.from(user, 'base64').toString('ascii')
+    userData = JSON.parse(data)
+}
 
 const existeAbility = userData ? userData.ability : null
 

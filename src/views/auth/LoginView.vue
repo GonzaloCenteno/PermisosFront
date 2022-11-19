@@ -51,6 +51,7 @@ import * as authService from '@/service/AuthService.js'
 import {ref} from "vue"
 import { useRouter } from "vue-router"
 import ability from '@/acl/ability'
+import { Buffer } from 'buffer'
 
 export default {
     setup() {
@@ -77,8 +78,10 @@ export default {
                     action: 'read',
                     subject: 'Auth'
                 })
+
+                let base64 = Buffer.from(JSON.stringify(data)).toString('base64')
                 
-                localStorage.setItem("userData", JSON.stringify(data))
+                localStorage.setItem("userData", base64)
 
                 ability.update(data.ability)
 

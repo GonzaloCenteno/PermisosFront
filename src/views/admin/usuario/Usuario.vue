@@ -79,7 +79,7 @@
             </Column>
             <Column field="accion">
                 <template #body="slotProps">
-                    <Button label="Editar" icon="pi pi-external-link" @click="openModalEditar(slotProps.data)" />
+                    <Button label="Editar" icon="pi pi-external-link" @click="openModalEditar(slotProps.data)" v-if="can('update', 'user')" />
                 </template>
             </Column>
         </DataTable>
